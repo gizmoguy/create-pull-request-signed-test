@@ -1,0 +1,21 @@
+---
+name: Create pull request
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-pull-request-file:
+    name: Create pull request
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create file
+        run: |
+          echo "test" > new-file
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          sign-commits: true
