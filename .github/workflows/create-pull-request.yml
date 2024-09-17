@@ -19,3 +19,19 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           sign-commits: true
+
+  create-pull-request-dir:
+    name: Create pull request
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create dir
+        run: |
+          mkdir new-dir
+          echo "test" > new-dir/new-file
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          sign-commits: true
