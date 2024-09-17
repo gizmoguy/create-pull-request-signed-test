@@ -1,0 +1,21 @@
+---
+name: Create pull request
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-pull-request:
+    name: Create pull request with submodule
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add git submodule
+        run: |
+          git submodule add https://github.com/actions/starter-workflows
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          sign-commits: true
